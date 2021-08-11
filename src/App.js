@@ -13,7 +13,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 
 
 const StockTracker=()=> {
-
+  const URL =  "https://stocktracker-backend.herokuapp.com/api/stocks/"
   let match = useRouteMatch("/");
   const [open, setOpen] = useState(true)
   const [updateModal ,setUpdateModal] = useState(false)
@@ -22,7 +22,7 @@ const StockTracker=()=> {
   const list_id = useRef()
   let [reList, setReList]= useState(0)
   const {data, status } = useQuery(["StocksList", reList], async ()=>{
-  const res = await fetch("http://127.0.0.1:8000/api/stocks/")
+  const res = await fetch(URL)
   const data = await res.json();
     console.log(data)
     return data;
@@ -43,6 +43,7 @@ const cxtValues = {
   setUpdateModal,
   setReList,
   reList,
+  URL
 }
   
   return (

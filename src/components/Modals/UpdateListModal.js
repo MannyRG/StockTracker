@@ -16,7 +16,7 @@ import {MyContext} from "../../Context/Context.js"
 
 
 const Modal = ({isOpen, slugs, id}) => {
-    const {reList,setReList } = useContext(MyContext)
+    const {reList,setReList, URL } = useContext(MyContext)
     const searchRef =useRef("")
     const menuRef =useRef()
     const undoRefVal = {
@@ -87,14 +87,14 @@ const handleRedo = ()=>{
 
 const UpdateList =async(stock, id)=>{
     const data = stock
-    const res = await fetch("http://127.0.0.1:8000/api/stocks/" + id, {
+    const res = await fetch(URL + id, {
         method: "PUT", 
         headers: {
             'Content-Type': 'application/json'
           },
         body: JSON.stringify(data)
 
-      })
+})
     const status = await res.status
       if (status === 200) isOpen(false);  setReList(reList+1);
 }

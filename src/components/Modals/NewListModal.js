@@ -16,7 +16,7 @@ import {MyContext} from "../../Context/Context.js"
 
 
 const Modal = ({openModal}) => {
-    const {reList, setReList } = useContext(MyContext)
+    const {reList, setReList, URL } = useContext(MyContext)
 
     const history = useHistory()
     const [name , setName] =useState("")
@@ -61,7 +61,7 @@ const SubmitList =async()=>{
     }
     console.log(data)
 
-    const res = await fetch("http://127.0.0.1:8000/api/stocks/", {
+    const res = await fetch(URL, {
         method: "POST", 
         headers: {
             'Content-Type': 'application/json'

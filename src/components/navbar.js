@@ -8,13 +8,13 @@ import {useHistory} from "react-router-dom";
 
 
 const Navbar = () => {
-    const {open, title, list_id, setUpdateModal, reList, setReList } = useContext(MyContext)
+    const {open, title, list_id, setUpdateModal, reList, setReList, URL } = useContext(MyContext)
     const [openModal ,setOpenModal]=useState(false)
     const history = useHistory()
 
     const handleDeleteList = async(id)=>{
         console.log(id)
-        const res = await fetch("http://127.0.0.1:8000/api/stocks/" + id, {method: "DELETE", })
+        const res = await fetch(URL + id, {method: "DELETE", })
         const status = await res.status
         console.log(status)
         if(status === 200) history.push("/") ; setReList(reList+1);
