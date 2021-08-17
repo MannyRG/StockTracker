@@ -11,7 +11,7 @@ const getData=(dataSet, dataName)=>{
 
     const dateStamp = dataSet.t.map(unixtime=>{
             const unixTime= new Date(unixtime * 1000)
-            const hour = unixTime.getHours()
+            // const hour = unixTime.getHours()
             const day = unixTime.getDate()
             const month = unixTime.getMonth()
             return `${month}/${day}`

@@ -8,7 +8,6 @@ import {useState, useRef, } from "react"
 import {MyContext} from "./Context/Context.js"
 import { useQuery} from "react-query";
 import Modal from "./components/Modals/NewListModal"
-import { ReactQueryDevtools } from 'react-query/devtools'
 
 
 
@@ -24,7 +23,6 @@ const StockTracker=()=> {
   const {data, status } = useQuery(["StocksList", reList], async ()=>{
   const res = await fetch(URL)
   const data = await res.json();
-    console.log(data)
     return data;
 },{refetchOnWindowFocus: false})
 
@@ -57,7 +55,6 @@ const cxtValues = {
           </Switch>
 
         {addModal?<Modal openModal={setAddModal}/>:null}
-        <ReactQueryDevtools initialIsOpen={false} />
       </MyContext.Provider>
 
   );
